@@ -37,6 +37,9 @@ class Hartman6(ManyLocalMinima):
     def global_minimum(self):
         return -3.32237
 
+    def plot_2d(self):
+        print("Error: hartman6 is 6-dimensional")
+
 
 class Bukin6(ManyLocalMinima):
     def description(self):

@@ -78,13 +78,14 @@ def levy(x: np.ndarray):
     :param x: c(x1, x2, ..., xd)
     :return: the y-value (float)
     """
+    print(x.shape)
     d = x.shape[-1]  # integer
     w = 1 + (x - 1) / 4  # same shape as x
 
-    term1 = (np.sin(np.pi * w[0, :])) ** 2
-    term3 = (w[d-1] - 1)**2 * (1 + 1 * (np.sin(2 * np.pi * w[d-1])) ** 2)
+    term1 = (np.sin(np.pi * w[:, 0])) ** 2
+    term3 = (w[:, d-1] - 1) ** 2 * (1 + 1 * (np.sin(2 * np.pi * w[:, d-1])) ** 2)
 
-    wi = w[0 : (d - 1)]
+    wi = w[0:d-2]
     sum = np.sum((wi - 1)**2 * (1 + 10 * (np.sin(np.pi * wi + 1)) ** 2))
 
     return term1 + sum + term3
