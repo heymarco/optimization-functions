@@ -10,6 +10,9 @@ from mpl_toolkits.mplot3d import Axes3D
 
 class OptimizationFunction(ABC):
     @abstractmethod
+    def name(self): str
+
+    @abstractmethod
     def type(self): str
 
     @abstractmethod

@@ -5,6 +5,9 @@ from optifn.functions import ackley, hart6, bukin6, cross_in_tray, levy, bohache
 
 
 class Ackley(ManyLocalMinima):
+    def name(self):
+        return "Ackley"
+
     def description(self):
         return "The Ackley function is widely used for testing optimization algorithms. In its two-dimensional form, as shown in https://www.sfu.ca/~ssurjano/ackley.html, it is characterized by a nearly flat outer region, and a large hole at the centre. The function poses a risk for optimization algorithms, particularly hillclimbing algorithms, to be trapped in one of its many local minima."
 
@@ -22,6 +25,9 @@ class Ackley(ManyLocalMinima):
 
 
 class Hartman6(ManyLocalMinima):
+    def name(self):
+        return "Hartman6"
+
     def description(self):
         return "The 6-dimensional Hartmann function has 6 local minima."
 
@@ -42,6 +48,9 @@ class Hartman6(ManyLocalMinima):
 
 
 class Bukin6(ManyLocalMinima):
+    def name(self):
+        return "Bukin6"
+
     def description(self):
         return "The sixth Bukin function has many local minima, all of which lie in a ridge."
 
@@ -57,6 +66,9 @@ class Bukin6(ManyLocalMinima):
 
 
 class CrossInTray(ManyLocalMinima):
+    def name(self):
+        return "Cross In Tray"
+
     def description(self):
         return "The Cross-in-Tray function has multiple global minima. It is shown here (https://www.sfu.ca/~ssurjano/crossit.html) with a smaller domain in the second plot, so that its characteristic cross will be visible."
 
@@ -74,6 +86,9 @@ class CrossInTray(ManyLocalMinima):
 
 
 class Levy(ManyLocalMinima):
+    def name(self):
+        return "Levy"
+
     def description(self):
         return "More information available under https://www.sfu.ca/~ssurjano/levy.html"
 
@@ -91,6 +106,9 @@ class Levy(ManyLocalMinima):
 
 
 class Bohachevsky(BowlShaped):
+    def name(self):
+        return "Bohachevsky"
+
     def description(self):
         return "The Bohachevsky functions all have the same similar bowl shape."
 
@@ -108,6 +126,9 @@ class Bohachevsky(BowlShaped):
 
 
 class Matyas(PlateShaped):
+    def name(self):
+        return "Matyas"
+
     def description(self):
         return "The Matyas function has no local minima except the global one."
 
@@ -125,6 +146,9 @@ class Matyas(PlateShaped):
 
 
 class ThreeHump(ValleyShaped):
+    def name(self):
+        return "ThreeHump"
+
     def description(self):
         return "The function has three local minima and a global minimum at (0, 0)."
 
