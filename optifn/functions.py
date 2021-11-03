@@ -48,8 +48,8 @@ def bukin6(x: np.ndarray):
     :return: the y-value (float)
     """
     assert x.shape[-1] == 2
-    x1 = x[0, :]
-    x2 = x[1, :]
+    x1 = x[:, 0]
+    x2 = x[:, 1]
 
     term1 = 100 * np.sqrt(np.abs(x2 - 0.01 * x1**2))
     term2 = 0.01 * np.abs(x1 + 10)
@@ -63,8 +63,8 @@ def cross_in_tray(x: np.ndarray):
     :return: the y-value (float)
     """
     assert x.shape[-1] == 2
-    x1 = x[0, :]
-    x2 = x[1, :]
+    x1 = x[:, 0]
+    x2 = x[:, 1]
 
     fact1 = np.sin(x1) * np.sin(x2)
     fact2 = np.exp(np.abs(100 - np.sqrt(x1**2 + x2**2) / np.pi))
@@ -99,7 +99,7 @@ def bohachevsky(x: np.ndarray):
     """
     assert x.shape[-1] == 2
     x1 = x[:, 0]
-    x2 = x[:, 1]
+    x2 = x[:, 1]s
 
     term1 = x1 ** 2
     term2 = 2 * x2 ** 2
