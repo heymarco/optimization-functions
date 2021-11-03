@@ -99,7 +99,7 @@ def bohachevsky(x: np.ndarray):
     """
     assert x.shape[-1] == 2
     x1 = x[:, 0]
-    x2 = x[:, 1]s
+    x2 = x[:, 1]
 
     term1 = x1 ** 2
     term2 = 2 * x2 ** 2
