@@ -3,11 +3,11 @@ import numpy as np
 
 def hart6(x,
           alpha=np.asarray([1.0, 1.2, 3.0, 3.2]),
-          P=10 ** -4 * np.asarray([[1312, 1696, 5569, 124, 8283, 5886],
+          P = 10 ** -4 * np.asarray([[1312, 1696, 5569, 124, 8283, 5886],
                                    [2329, 4135, 8307, 3736, 1004, 9991],
                                    [2348, 1451, 3522, 2883, 3047, 6650],
                                    [4047, 8828, 8732, 5743, 1091, 381]]),
-          A=np.asarray([[10, 3, 17, 3.50, 1.7, 8],
+          A = np.asarray([[10, 3, 17, 3.50, 1.7, 8],
                         [0.05, 10, 17, 0.1, 8, 14],
                         [3, 3.5, 1.7, 10, 17, 8],
                         [17, 8, 0.05, 10, 0.1, 14]])):
@@ -18,6 +18,7 @@ def hart6(x,
 
     More details: <http://www.sfu.ca/~ssurjano/hart6.html>
     """
+    assert x.shape[-1] == 6
     return -np.sum(alpha * np.exp(-np.sum(A * (np.array(x) - P) ** 2, axis=1)))
 
 
@@ -46,7 +47,7 @@ def bukin6(x: np.ndarray):
     :param x: 2-dim input
     :return: the y-value (float)
     """
-    assert x.shape[0] == 2
+    assert x.shape[-1] == 2
     x1 = x[0, :]
     x2 = x[1, :]
 
@@ -61,7 +62,7 @@ def cross_in_tray(x: np.ndarray):
     :param x: 2-dim numpy array
     :return: the y-value (float)
     """
-    assert x.shape[0] == 2
+    assert x.shape[-1] == 2
     x1 = x[0, :]
     x2 = x[1, :]
 
@@ -77,7 +78,7 @@ def levy(x: np.ndarray):
     :param x: c(x1, x2, ..., xd)
     :return: the y-value (float)
     """
-    d = len(x)  # integer
+    d = x.shape[-1]  # integer
     w = 1 + (x - 1) / 4  # same shape as x
 
     term1 = (np.sin(np.pi * w[0, :])) ** 2
@@ -96,8 +97,9 @@ def bohachevsky(x: np.ndarray):
     :param x: 2-dimensional
     :return: float
     """
-    x1 = x[0, :]
-    x2 = x[1, :]
+    assert x.shape[-1] == 2
+    x1 = x[:, 0]
+    x2 = x[:, 1]
 
     term1 = x1 ** 2
     term2 = 2 * x2 ** 2
@@ -115,8 +117,9 @@ def matyas(x: np.ndarray):
     :param x: 2-dimensional
     :return: float
     """
-    x1 = x[0, :]
-    x2 = x[1, :]
+    assert x.shape[-1] == 2
+    x1 = x[:, 0]
+    x2 = x[:, 1]
 
     term1 = 0.26 * (x1 ** 2 + x2 ** 2)
     term2 = -0.48 * x1 * x2
@@ -131,8 +134,9 @@ def three_hump(x: np.ndarray):
     :param x: 2-dimensional
     :return: float
     """
-    x1 = x[0, :]
-    x2 = x[1, :]
+    assert x.shape[-1] == 2
+    x1 = x[:, 0]
+    x2 = x[:, 1]
 
     term1 = 2 * x1 ** 2
     term2 = -1.05 * x1 ** 4

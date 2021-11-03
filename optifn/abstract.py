@@ -30,7 +30,7 @@ class OptimizationFunction(ABC):
         high = limits[0][1]
         x1 = x2 = np.arange(low, high, (high - low) / 100.0)
         X1, X2 = np.meshgrid(x1, x2)
-        X = np.vstack([X1.flatten(), X2.flatten()]).T
+        X = np.vstack([X1.flatten(), X2.flatten()])
         Y = self(X, c=0.2 * np.pi).reshape(X1.shape)
         fig = plt.figure(figsize=(10, 6))
         ax = fig.add_subplot(111, projection='3d')
