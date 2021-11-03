@@ -1,21 +1,5 @@
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
-try:
-    import builtins
-except ImportError:
-    # Python 2 compat: just to be able to declare that Python >=3.5 is needed.
-    import __builtin__ as builtins
+from setuptools import setup, find_packages
 
-# This is a bit (!) hackish: we are setting a global variable so that the
-# main skopt __init__ can detect if it is being loaded by the setup
-# routine
-builtins.__SKOPT_SETUP__ = True
-
-import optifn
-
-VERSION = optifn.__version__
 
 CLASSIFIERS = ['Intended Audience :: Science/Research',
                'Intended Audience :: Developers',
@@ -33,13 +17,12 @@ CLASSIFIERS = ['Intended Audience :: Science/Research',
 
 
 setup(name='optimization-functions',
-      version=VERSION,
       description='Common functions for testing optimization algorithms.',
       url='https://github.com/heymarco/optimization-functions',
       license='MIT',
       author='Marco Heyden',
       classifiers=CLASSIFIERS,
-      packages=['optifn'],
+      packages=find_packages("optimization-functions"),
       install_requires=["numpy"],
       extras_require={
         'plots':  ["matplotlib>=2.0.0"]
