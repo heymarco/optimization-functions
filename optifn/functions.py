@@ -77,8 +77,6 @@ def levy(x: np.ndarray):
     :param x: c(x1, x2, ..., xd)
     :return: the y-value (float)
     """
-    print(x.shape)
-    d = x.shape[-1]  # integer
     w = 1 + (x - 1) / 4  # same shape as x
 
     term1 = (np.sin(np.pi * w.T[0])) ** 2
