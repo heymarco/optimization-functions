@@ -81,10 +81,10 @@ def levy(x: np.ndarray):
     d = x.shape[-1]  # integer
     w = 1 + (x - 1) / 4  # same shape as x
 
-    term1 = (np.sin(np.pi * w[:, 0])) ** 2
-    term3 = (w.T[d - 1] - 1) ** 2 * (1 + 1 * (np.sin(2 * np.pi * w.T[d - 1])) ** 2)
+    term1 = (np.sin(np.pi * w.T[0])) ** 2
+    term3 = (w.T[-1] - 1) ** 2 * (1 + 1 * (np.sin(2 * np.pi * w.T[-1])) ** 2)
 
-    wi = w.T[0:d - 2]
+    wi = w.T[:-1]
     sum = np.sum((wi - 1) ** 2 * (1 + 10 * (np.sin(np.pi * wi + 1)) ** 2))
 
     return term1 + sum + term3
