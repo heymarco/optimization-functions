@@ -3,11 +3,11 @@ import numpy as np
 
 def hart6(x,
           alpha=np.asarray([1.0, 1.2, 3.0, 3.2]),
-          P = 10 ** -4 * np.asarray([[1312, 1696, 5569, 124, 8283, 5886],
+          P=10 ** -4 * np.asarray([[1312, 1696, 5569, 124, 8283, 5886],
                                    [2329, 4135, 8307, 3736, 1004, 9991],
                                    [2348, 1451, 3522, 2883, 3047, 6650],
                                    [4047, 8828, 8732, 5743, 1091, 381]]),
-          A = np.asarray([[10, 3, 17, 3.50, 1.7, 8],
+          A=np.asarray([[10, 3, 17, 3.50, 1.7, 8],
                         [0.05, 10, 17, 0.1, 8, 14],
                         [3, 3.5, 1.7, 10, 17, 8],
                         [17, 8, 0.05, 10, 0.1, 14]])):
@@ -22,8 +22,7 @@ def hart6(x,
     return -np.sum(alpha * np.exp(-np.sum(A * (np.array(x) - P) ** 2, axis=1)))
 
 
-
-def ackley(x: np.ndarray, a=20, b=0.2, c=2*np.pi):
+def ackley(x: np.ndarray, a=20, b=0.2, c=2 * np.pi):
     """
     :param x: c(x1, x2, ..., xd)
     :param a: constant (optional), with default value 20
@@ -33,7 +32,7 @@ def ackley(x: np.ndarray, a=20, b=0.2, c=2*np.pi):
     """
     d = x.shape[-1]
     sum1 = np.sum(np.power(x, 2.0), axis=-1)
-    sum2 = np.sum(np.cos(c*x), axis=-1)
+    sum2 = np.sum(np.cos(c * x), axis=-1)
 
     term1 = -a * np.exp(-b * np.sqrt(sum1 / d))
     term2 = -np.exp(sum2 / d)
@@ -48,10 +47,10 @@ def bukin6(x: np.ndarray):
     :return: the y-value (float)
     """
     assert x.shape[-1] == 2
-    x1 = x[:, 0]
-    x2 = x[:, 1]
+    x1 = x.T[0]
+    x2 = x.T[1]
 
-    term1 = 100 * np.sqrt(np.abs(x2 - 0.01 * x1**2))
+    term1 = 100 * np.sqrt(np.abs(x2 - 0.01 * x1 ** 2))
     term2 = 0.01 * np.abs(x1 + 10)
     return term1 + term2
 
@@ -63,13 +62,13 @@ def cross_in_tray(x: np.ndarray):
     :return: the y-value (float)
     """
     assert x.shape[-1] == 2
-    x1 = x[:, 0]
-    x2 = x[:, 1]
+    x1 = x.T[0]
+    x2 = x.T[1]
 
     fact1 = np.sin(x1) * np.sin(x2)
-    fact2 = np.exp(np.abs(100 - np.sqrt(x1**2 + x2**2) / np.pi))
+    fact2 = np.exp(np.abs(100 - np.sqrt(x1 ** 2 + x2 ** 2) / np.pi))
 
-    return -0.0001 * (np.abs(fact1 * fact2) + 1)**0.1
+    return -0.0001 * (np.abs(fact1 * fact2) + 1) ** 0.1
 
 
 def levy(x: np.ndarray):
@@ -83,10 +82,10 @@ def levy(x: np.ndarray):
     w = 1 + (x - 1) / 4  # same shape as x
 
     term1 = (np.sin(np.pi * w[:, 0])) ** 2
-    term3 = (w[:, d-1] - 1) ** 2 * (1 + 1 * (np.sin(2 * np.pi * w[:, d-1])) ** 2)
+    term3 = (w[:, d - 1] - 1) ** 2 * (1 + 1 * (np.sin(2 * np.pi * w[:, d - 1])) ** 2)
 
-    wi = w[0:d-2]
-    sum = np.sum((wi - 1)**2 * (1 + 10 * (np.sin(np.pi * wi + 1)) ** 2))
+    wi = w[0:d - 2]
+    sum = np.sum((wi - 1) ** 2 * (1 + 10 * (np.sin(np.pi * wi + 1)) ** 2))
 
     return term1 + sum + term3
 
@@ -99,8 +98,8 @@ def bohachevsky(x: np.ndarray):
     :return: float
     """
     assert x.shape[-1] == 2
-    x1 = x[:, 0]
-    x2 = x[:, 1]
+    x1 = x.T[0]
+    x2 = x.T[1]
 
     term1 = x1 ** 2
     term2 = 2 * x2 ** 2
@@ -119,8 +118,8 @@ def matyas(x: np.ndarray):
     :return: float
     """
     assert x.shape[-1] == 2
-    x1 = x[:, 0]
-    x2 = x[:, 1]
+    x1 = x.T[0]
+    x2 = x.T[1]
 
     term1 = 0.26 * (x1 ** 2 + x2 ** 2)
     term2 = -0.48 * x1 * x2
@@ -136,8 +135,8 @@ def three_hump(x: np.ndarray):
     :return: float
     """
     assert x.shape[-1] == 2
-    x1 = x[:, 0]
-    x2 = x[:, 1]
+    x1 = x.T[0]
+    x2 = x.T[1]
 
     term1 = 2 * x1 ** 2
     term2 = -1.05 * x1 ** 4
@@ -146,5 +145,3 @@ def three_hump(x: np.ndarray):
     term5 = x2 ** 2
 
     return term1 + term2 + term3 + term4 + term5
-
-
