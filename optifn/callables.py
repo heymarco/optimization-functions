@@ -13,6 +13,7 @@ class Ackley(ManyLocalMinima):
 
     def __call__(self, *args, **kwargs):
         x = args[0]
+        x = self.to_numpy(x)
         return ackley(x)
 
     def eval_limits(self, *args, **kwargs):
@@ -33,6 +34,7 @@ class Hartman6(ManyLocalMinima):
 
     def __call__(self, *args, **kwargs):
         x = args[0]
+        x = self.to_numpy(x)
         return hart6(x)
 
     def eval_limits(self, *args, **kwargs):
@@ -56,6 +58,7 @@ class Bukin6(ManyLocalMinima):
 
     def __call__(self, *args, **kwargs):
         x = args[0]
+        x = self.to_numpy(x)
         return bukin6(x)
 
     def eval_limits(self, *args, **kwargs):
@@ -74,6 +77,7 @@ class CrossInTray(ManyLocalMinima):
 
     def __call__(self, *args, **kwargs):
         x = args[0]
+        x = self.to_numpy(x)
         return cross_in_tray(x)
 
     def eval_limits(self, *args, **kwargs):
@@ -94,6 +98,7 @@ class Levy(ManyLocalMinima):
 
     def __call__(self, *args, **kwargs):
         x = args[0]
+        x = self.to_numpy(x)
         return levy(x)
 
     def eval_limits(self, *args, **kwargs):
@@ -114,6 +119,7 @@ class Bohachevsky(BowlShaped):
 
     def __call__(self, *args, **kwargs):
         x = args[0]
+        x = self.to_numpy(x)
         return bohachevsky(x)
 
     def eval_limits(self, *args, **kwargs):
@@ -134,6 +140,7 @@ class Matyas(PlateShaped):
 
     def __call__(self, *args, **kwargs):
         x = args[0]
+        x = self.to_numpy(x)
         return matyas(x)
 
     def eval_limits(self, *args, **kwargs):
@@ -154,6 +161,7 @@ class ThreeHump(ValleyShaped):
 
     def __call__(self, *args, **kwargs):
         x = args[0]
+        x = self.to_numpy(x)
         return three_hump(x)
 
     def eval_limits(self, *args, **kwargs):

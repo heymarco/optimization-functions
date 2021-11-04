@@ -40,6 +40,11 @@ class OptimizationFunction(ABC):
         plt.tight_layout()
         plt.show()
 
+    def to_numpy(self, x) -> np.ndarray:
+        if isinstance(x, list):
+            x = np.asarray(x)
+        return x
+
 
 class ManyLocalMinima(OptimizationFunction, ABC):
     def type(self):
